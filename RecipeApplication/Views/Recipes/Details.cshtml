@@ -57,7 +57,41 @@
         <dd>
             @Html.DisplayFor(model => model.RecipeCategory.CatName)
         </dd>
+       <dt>
+           @Html.DisplayNameFor(model => model.RecipeIngredients)
+       </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>
+                        Ingredient
+                    </th>
+                    <th>
+                        Measurement
+                    </th>
+                </tr>
+                @foreach (var item in Model.RecipeIngredients)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ingredient.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Measurement)
+                        </td>
 
+
+                    </tr>
+                }
+
+
+            </table>
+
+
+
+        </dd>
+
+       
     </dl>
 </div>
 <p>
