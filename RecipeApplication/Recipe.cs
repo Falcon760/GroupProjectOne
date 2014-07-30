@@ -23,8 +23,8 @@ namespace RecipeApplication
         public string Name { get; set; }
         public int RecipeCatId { get; set; }
         public string RecipeDescription { get; set; }
-        public int PrepTime { get; set; }
-        public int CookTime { get; set; }
+        public string PrepTime { get; set; }
+        public string CookTime { get; set; }
         public string Procedures { get; set; }
     
         public virtual RecipeCategory RecipeCategory { get; set; }

@@ -55,7 +55,7 @@ namespace RecipeApplication.Controllers
             {
                 db.RecipeIngredients.Add(recipeIngredient);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Recipes");
             }
 
             ViewBag.IngredientId = new SelectList(db.Ingredients, "Id", "Name", recipeIngredient.IngredientId);
@@ -91,7 +91,7 @@ namespace RecipeApplication.Controllers
             {
                 db.Entry(recipeIngredient).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Recipes");
             }
             ViewBag.IngredientId = new SelectList(db.Ingredients, "Id", "Name", recipeIngredient.IngredientId);
             ViewBag.RecipeId = new SelectList(db.Recipes, "Id", "Name", recipeIngredient.RecipeId);
@@ -121,7 +121,7 @@ namespace RecipeApplication.Controllers
             RecipeIngredient recipeIngredient = db.RecipeIngredients.Find(id);
             db.RecipeIngredients.Remove(recipeIngredient);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Recipes");
         }
 
         protected override void Dispose(bool disposing)

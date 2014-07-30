@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RecipeDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RecipeDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Ingredient">
           <Key>
             <PropertyRef Name="Id" />
@@ -28,8 +28,8 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RecipeCatId" Type="int" Nullable="false" />
           <Property Name="RecipeDescription" Type="nvarchar" MaxLength="50" />
-          <Property Name="PrepTime" Type="int" Nullable="false" />
-          <Property Name="CookTime" Type="int" Nullable="false" />
+          <Property Name="PrepTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CookTime" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Procedures" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="RecipeCategory">
@@ -120,8 +120,7 @@
             <End Role="RecipeIngredient" EntitySet="RecipeIngredient" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RecipeDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -151,8 +150,8 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RecipeCatId" Type="Int32" Nullable="false" />
           <Property Name="RecipeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PrepTime" Type="Int32" Nullable="false" />
-          <Property Name="CookTime" Type="Int32" Nullable="false" />
+          <Property Name="PrepTime" Type="String" Nullable="false" />
+          <Property Name="CookTime" Type="String" Nullable="false" />
           <Property Name="Procedures" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="RecipeCategory" Relationship="Self.FK_Recipe_RecipeCategory" FromRole="Recipe" ToRole="RecipeCategory" />
           <NavigationProperty Name="RecipeIngredients" Relationship="Self.FK_RecipeIngredient_Recipe" FromRole="Recipe" ToRole="RecipeIngredient" />

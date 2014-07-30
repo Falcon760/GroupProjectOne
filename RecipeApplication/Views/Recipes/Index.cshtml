@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<RecipeApplication.Recipe>
 
+@using RecipeApplication.Models;
+
 @{
     ViewBag.Title = "Index";
 }
@@ -38,6 +40,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
+            @*@Html.Truncate(item.RecipeDescription, 20)*@
             @Html.DisplayFor(modelItem => item.RecipeDescription)
         </td>
         <td>
