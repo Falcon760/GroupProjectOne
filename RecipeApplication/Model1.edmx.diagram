@@ -4,22 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="89dd5766293244c789b83bb05d3b5fa1" Name="Diagram1">
-<<<<<<< HEAD
-        <EntityTypeShape EntityType="RecipeDbModel.Ingredient" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RecipeDbModel.IngredientType" Width="1.5" PointX="9.25" PointY="3" IsExpanded="true" />
-=======
-        
-        
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master
-        <EntityTypeShape EntityType="RecipeDbModel.Recipe" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="RecipeDbModel.RecipeCategory" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <AssociationConnector Association="RecipeDbModel.FK_Ingredient_IngredientType" ManuallyRouted="false" >
-        </AssociationConnector>
+      <Diagram DiagramId="c420560413024aca96626191dbef8bc6" Name="Diagram1">
+        <EntityTypeShape EntityType="RecipeDbModel.Ingredient" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecipeDbModel.IngredientType" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecipeDbModel.Recipe" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecipeDbModel.RecipeCategory" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecipeDbModel.RecipeIngredient" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="RecipeDbModel.FK_Ingredient_IngredientType" ManuallyRouted="false" />
+        <AssociationConnector Association="RecipeDbModel.FK_RecipeIngredient_Ingredient" ManuallyRouted="false" />
         <AssociationConnector Association="RecipeDbModel.FK_Recipe_RecipeCategory" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="RecipeDbModel.RecipeIngredient" Width="2.125" PointX="7.25" PointY="0.75" />
-        <AssociationConnector Association="RecipeDbModel.FK_RecipeIngredient_Ingredient" />
-        <AssociationConnector Association="RecipeDbModel.FK_RecipeIngredient_Recipe" />
+        <AssociationConnector Association="RecipeDbModel.FK_RecipeIngredient_Recipe" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

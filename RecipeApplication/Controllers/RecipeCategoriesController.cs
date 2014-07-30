@@ -12,7 +12,7 @@ namespace RecipeApplication.Controllers
 {
     public class RecipeCategoriesController : Controller
     {
-        private RecipeDbEntities db = new RecipeDbEntities();
+        private RecipeDbEntities1 db = new RecipeDbEntities1();
 
         // GET: RecipeCategories
         public ActionResult Index()

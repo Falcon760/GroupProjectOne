@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>This is the best page ever</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -25,9 +25,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Procedures)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IngredientId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RecipeCategory.CatName)
@@ -51,9 +48,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Procedures)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IngredientId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RecipeCategory.CatName)

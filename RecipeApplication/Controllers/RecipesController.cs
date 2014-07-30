@@ -12,7 +12,7 @@ namespace RecipeApplication.Controllers
 {
     public class RecipesController : Controller
     {
-        private RecipeDbEntities db = new RecipeDbEntities();
+        private RecipeDbEntities1 db = new RecipeDbEntities1();
 
         // GET: Recipes
         public ActionResult Index()
@@ -48,7 +48,7 @@ namespace RecipeApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,RecipeCatId,RecipeDescription,PrepTime,CookTime,Procedures,IngredientId")] Recipe recipe)
+        public ActionResult Create([Bind(Include = "Id,Name,RecipeCatId,RecipeDescription,PrepTime,CookTime,Procedures")] Recipe recipe)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace RecipeApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,RecipeCatId,RecipeDescription,PrepTime,CookTime,Procedures,IngredientId")] Recipe recipe)
+        public ActionResult Edit([Bind(Include = "Id,Name,RecipeCatId,RecipeDescription,PrepTime,CookTime,Procedures")] Recipe recipe)
         {
             if (ModelState.IsValid)
             {
