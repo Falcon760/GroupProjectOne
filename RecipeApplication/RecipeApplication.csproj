@@ -39,13 +39,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -118,6 +121,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IngredientsController.cs" />
+    <Compile Include="Controllers\IngredientTypesController.cs" />
+    <Compile Include="Controllers\RecipeCategoriesController.cs" />
+    <Compile Include="Controllers\RecipeIngredientsController.cs" />
+    <Compile Include="Controllers\RecipesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -147,6 +155,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="RecipeCategory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecipeIngredient.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -203,6 +214,31 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Recipes\Create.cshtml" />
+    <Content Include="Views\Recipes\Delete.cshtml" />
+    <Content Include="Views\Recipes\Details.cshtml" />
+    <Content Include="Views\Recipes\Edit.cshtml" />
+    <Content Include="Views\Recipes\Index.cshtml" />
+    <Content Include="Views\Ingredients\Create.cshtml" />
+    <Content Include="Views\Ingredients\Delete.cshtml" />
+    <Content Include="Views\Ingredients\Details.cshtml" />
+    <Content Include="Views\Ingredients\Edit.cshtml" />
+    <Content Include="Views\Ingredients\Index.cshtml" />
+    <Content Include="Views\IngredientTypes\Create.cshtml" />
+    <Content Include="Views\IngredientTypes\Delete.cshtml" />
+    <Content Include="Views\IngredientTypes\Details.cshtml" />
+    <Content Include="Views\IngredientTypes\Edit.cshtml" />
+    <Content Include="Views\IngredientTypes\Index.cshtml" />
+    <Content Include="Views\RecipeCategories\Create.cshtml" />
+    <Content Include="Views\RecipeCategories\Delete.cshtml" />
+    <Content Include="Views\RecipeCategories\Details.cshtml" />
+    <Content Include="Views\RecipeCategories\Edit.cshtml" />
+    <Content Include="Views\RecipeCategories\Index.cshtml" />
+    <Content Include="Views\RecipeIngredients\Create.cshtml" />
+    <Content Include="Views\RecipeIngredients\Delete.cshtml" />
+    <Content Include="Views\RecipeIngredients\Details.cshtml" />
+    <Content Include="Views\RecipeIngredients\Edit.cshtml" />
+    <Content Include="Views\RecipeIngredients\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

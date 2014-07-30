@@ -12,18 +12,13 @@ namespace RecipeApplication
     using System;
     using System.Collections.Generic;
     
-    public partial class Ingredient
+    public partial class RecipeIngredient
     {
-        public Ingredient()
-        {
-            this.RecipeIngredients = new HashSet<RecipeIngredient>();
-        }
+        public int RecipeId { get; set; }
+        public int IngredientId { get; set; }
+        public string Measurement { get; set; }
     
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int IngredientTypeId { get; set; }
-    
-        public virtual IngredientType IngredientType { get; set; }
-        public virtual ICollection<RecipeIngredient> RecipeIngredients { get; set; }
+        public virtual Ingredient Ingredient { get; set; }
+        public virtual Recipe Recipe { get; set; }
     }
 }
