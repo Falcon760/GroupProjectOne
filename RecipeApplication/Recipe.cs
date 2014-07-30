@@ -14,6 +14,11 @@ namespace RecipeApplication
     
     public partial class Recipe
     {
+        public Recipe()
+        {
+            this.RecipeIngredients = new HashSet<RecipeIngredient>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public int RecipeCatId { get; set; }
@@ -23,7 +28,7 @@ namespace RecipeApplication
         public string Procedures { get; set; }
         public int IngredientId { get; set; }
     
-        public virtual Ingredient Ingredient { get; set; }
         public virtual RecipeCategory RecipeCategory { get; set; }
+        public virtual ICollection<RecipeIngredient> RecipeIngredients { get; set; }
     }
 }

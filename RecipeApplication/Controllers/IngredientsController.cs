@@ -17,7 +17,7 @@ namespace RecipeApplication.Controllers
         // GET: Ingredients
         public ActionResult Index()
         {
-            var ingredients = db.Ingredients.Include(i => i.IngredientType).Include(i => i.Recipe);
+            var ingredients = db.Ingredients.Include(i => i.IngredientType);
             return View(ingredients.ToList());
         }
 
@@ -40,7 +40,6 @@ namespace RecipeApplication.Controllers
         public ActionResult Create()
         {
             ViewBag.IngredientTypeId = new SelectList(db.IngredientTypes, "Id", "Name");
-            ViewBag.Id = new SelectList(db.Recipes, "Id", "Name");
             return View();
         }
 
@@ -59,7 +58,6 @@ namespace RecipeApplication.Controllers
             }
 
             ViewBag.IngredientTypeId = new SelectList(db.IngredientTypes, "Id", "Name", ingredient.IngredientTypeId);
-            ViewBag.Id = new SelectList(db.Recipes, "Id", "Name", ingredient.Id);
             return View(ingredient);
         }
 
@@ -76,7 +74,6 @@ namespace RecipeApplication.Controllers
                 return HttpNotFound();
             }
             ViewBag.IngredientTypeId = new SelectList(db.IngredientTypes, "Id", "Name", ingredient.IngredientTypeId);
-            ViewBag.Id = new SelectList(db.Recipes, "Id", "Name", ingredient.Id);
             return View(ingredient);
         }
 
@@ -94,7 +91,6 @@ namespace RecipeApplication.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.IngredientTypeId = new SelectList(db.IngredientTypes, "Id", "Name", ingredient.IngredientTypeId);
-            ViewBag.Id = new SelectList(db.Recipes, "Id", "Name", ingredient.Id);
             return View(ingredient);
         }
 

@@ -17,9 +17,6 @@
         <th>
             @Html.DisplayNameFor(model => model.IngredientType.Name)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Recipe.Name)
-        </th>
         <th></th>
     </tr>
 
@@ -30,9 +27,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IngredientType.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Recipe.Name)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

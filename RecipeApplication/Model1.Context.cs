@@ -29,5 +29,6 @@ namespace RecipeApplication
         public DbSet<IngredientType> IngredientTypes { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<RecipeCategory> RecipeCategories { get; set; }
+        public DbSet<RecipeIngredient> RecipeIngredients { get; set; }
     }
 }
