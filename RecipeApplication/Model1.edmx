@@ -5,14 +5,11 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="RecipeDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'RecipeDb.dbo.CuisineType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CuisineType">
           <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="CuiseTypeId" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CuiseTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Ingredient">
@@ -37,11 +34,11 @@ warning 6002: The table/view 'RecipeDb.dbo.CuisineType' does not have a primary 
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RecipeCatId" Type="int" Nullable="false" />
-          <Property Name="CuisineTypeId" Type="int" Nullable="false" />
           <Property Name="RecipeDescription" Type="nvarchar" MaxLength="50" />
           <Property Name="PrepTime" Type="int" Nullable="false" />
           <Property Name="CookTime" Type="int" Nullable="false" />
           <Property Name="Procedures" Type="text" Nullable="false" />
+          <Property Name="CuisineTypeId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="RecipeCategory">
           <Key>
@@ -82,6 +79,18 @@ warning 6002: The table/view 'RecipeDb.dbo.CuisineType' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Recipe_CuisineType1">
+          <End Role="CuisineType" Type="Self.CuisineType" Multiplicity="1" />
+          <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CuisineType">
+              <PropertyRef Name="CuiseTypeId" />
+            </Principal>
+            <Dependent Role="Recipe">
+              <PropertyRef Name="CuisineTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Recipe_RecipeCategory">
           <End Role="RecipeCategory" Type="Self.RecipeCategory" Multiplicity="1" />
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
@@ -119,21 +128,20 @@ warning 6002: The table/view 'RecipeDb.dbo.CuisineType' does not have a primary 
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="RecipeDbModelStoreContainer">
+          <EntitySet Name="CuisineType" EntityType="Self.CuisineType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ingredient" EntityType="Self.Ingredient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IngredientType" EntityType="Self.IngredientType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recipe" EntityType="Self.Recipe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecipeCategory" EntityType="Self.RecipeCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecipeIngredient" EntityType="Self.RecipeIngredient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CuisineType" EntityType="Self.CuisineType" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CuisineType].[Id] AS [Id], 
-    [CuisineType].[Name] AS [Name]
-    FROM [dbo].[CuisineType] AS [CuisineType]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Ingredient_IngredientType" Association="Self.FK_Ingredient_IngredientType">
             <End Role="IngredientType" EntitySet="IngredientType" />
             <End Role="Ingredient" EntitySet="Ingredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipe_CuisineType1" Association="Self.FK_Recipe_CuisineType1">
+            <End Role="CuisineType" EntitySet="CuisineType" />
+            <End Role="Recipe" EntitySet="Recipe" />
           </AssociationSet>
           <AssociationSet Name="FK_Recipe_RecipeCategory" Association="Self.FK_Recipe_RecipeCategory">
             <End Role="RecipeCategory" EntitySet="RecipeCategory" />
@@ -178,12 +186,13 @@ warning 6002: The table/view 'RecipeDb.dbo.CuisineType' does not have a primary 
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RecipeCatId" Type="Int32" Nullable="false" />
           <Property Name="RecipeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PrepTime" Type="String" Nullable="false" />
-          <Property Name="CookTime" Type="String" Nullable="false" />
+          <Property Name="PrepTime" Type="Int32" Nullable="false" />
+          <Property Name="CookTime" Type="Int32" Nullable="false" />
           <Property Name="Procedures" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="RecipeCategory" Relationship="Self.FK_Recipe_RecipeCategory" FromRole="Recipe" ToRole="RecipeCategory" />
           <NavigationProperty Name="RecipeIngredients" Relationship="Self.FK_RecipeIngredient_Recipe" FromRole="Recipe" ToRole="RecipeIngredient" />
           <Property Name="CuisineTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CuisineType" Relationship="RecipeDbModel.FK_Recipe_CuisineType" FromRole="Recipe" ToRole="CuisineType" />
         </EntityType>
         <EntityType Name="RecipeCategory">
           <Key>
@@ -277,6 +286,10 @@ warning 6002: The table/view 'RecipeDb.dbo.CuisineType' does not have a primary 
           </AssociationSet>
           <EntitySet Name="sysdiagrams" EntityType="RecipeDbModel.sysdiagram" />
           <EntitySet Name="CuisineTypes" EntityType="RecipeDbModel.CuisineType" />
+          <AssociationSet Name="FK_Recipe_CuisineType" Association="RecipeDbModel.FK_Recipe_CuisineType">
+            <End EntitySet="CuisineTypes" Role="CuisineType" />
+            <End EntitySet="Recipes" Role="Recipe" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="sysdiagram">
           <Key>
@@ -290,12 +303,24 @@ warning 6002: The table/view 'RecipeDb.dbo.CuisineType' does not have a primary 
         </EntityType>
         <EntityType Name="CuisineType">
           <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="CuisineTypeId" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CuisineTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Recipes" Relationship="RecipeDbModel.FK_Recipe_CuisineType" FromRole="CuisineType" ToRole="Recipe" />
         </EntityType>
+        <Association Name="FK_Recipe_CuisineType">
+          <End Type="RecipeDbModel.CuisineType" Multiplicity="1" Role="CuisineType" />
+          <End Type="RecipeDbModel.Recipe" Multiplicity="*" Role="Recipe" />
+          <ReferentialConstraint>
+            <Principal Role="CuisineType">
+              <PropertyRef Name="CuisineTypeId" />
+            </Principal>
+            <Dependent Role="Recipe">
+              <PropertyRef Name="CuisineTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -366,8 +391,8 @@ warning 6002: The table/view 'RecipeDb.dbo.CuisineType' does not have a primary 
           <EntitySetMapping Name="CuisineTypes">
             <EntityTypeMapping TypeName="RecipeDbModel.CuisineType">
               <MappingFragment StoreEntitySet="CuisineType">
+                <ScalarProperty Name="CuisineTypeId" ColumnName="CuiseTypeId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

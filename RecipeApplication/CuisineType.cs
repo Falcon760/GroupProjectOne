@@ -14,7 +14,14 @@ namespace RecipeApplication
     
     public partial class CuisineType
     {
-        public int Id { get; set; }
+        public CuisineType()
+        {
+            this.Recipes = new HashSet<Recipe>();
+        }
+    
         public string Name { get; set; }
+        public int CuisineTypeId { get; set; }
+    
+        public virtual ICollection<Recipe> Recipes { get; set; }
     }
 }
