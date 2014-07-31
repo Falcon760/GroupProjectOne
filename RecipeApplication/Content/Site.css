@@ -2,9 +2,9 @@
 @import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two);
 
 body {
-    padding-top: 50px;
     padding-bottom: 20px;
     font-family: 'Oswald', sans-serif;
+    background-image: url(Images/paper.jpg);
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -25,15 +25,35 @@ textarea {
     font-family: 'Shadows Into Light Two', cursive;
     position: relative;
   z-index: 1000;
-  min-height: 100px;
+  min-height: 75px;
   margin-bottom: 20px;
   border: 1px solid transparent;
+  background-color:#0f6d78;
   }
 
 .navbar-brand {
   float: left;
+  margin-top: 10px;
+  padding: 15px 15px;
+  font-size: 40px;
+  line-height: 20px;
+}
+
+.navbar-nav {
+  float: left;
   padding: 15px 15px;
   font-size: 30px;
   line-height: 20px;
+}
+
+.navbar .nav > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+  color: white;
+}
+
+.navbar .nav > li > a:hover {
+  color: red;
 }
 
