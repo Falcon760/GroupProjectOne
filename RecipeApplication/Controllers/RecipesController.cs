@@ -15,9 +15,16 @@ namespace RecipeApplication.Controllers
         private RecipeDbEntities1 db = new RecipeDbEntities1();
 
         // GET: Recipes
-        public ActionResult Index()
+        public ActionResult Index(int? SelectedIngredient)
         {
-            var recipes = db.Recipes.Include(r => r.RecipeCategory).Include(r => r.CuisineType);
+            var ingredients = db.Ingredients.OrderBy(q => q.Name).ToList();
+            ViewBag.SelectedIngredient = new SelectList(ingredients, "IngredientID", "Name", SelectedIngredient);
+            int departmentID = SelectedIngredient.GetValueOrDefault();
+            IQueryable<Recipe> recipes = db.Recipes
+            .Where(c => !SelectedIngredient.HasValue || c.Id == SelectedIngredient)
+            .OrderBy(d => d.Id)
+            .Include(d => d.RecipeIngredients);
+            var sql = recipes.ToString();
             return View(recipes.ToList());
         }
 
