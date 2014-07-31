@@ -40,5 +40,6 @@ namespace RecipeApplication
         public virtual RecipeCategory RecipeCategory { get; set; }
         public virtual ICollection<RecipeIngredient> RecipeIngredients { get; set; }
         public virtual CuisineType CuisineType { get; set; }
+
     }
 }

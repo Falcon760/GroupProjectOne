@@ -55,7 +55,7 @@ namespace RecipeApplication.Controllers
             {
                 db.RecipeIngredients.Add(recipeIngredient);
                 db.SaveChanges();
-                return RedirectToAction("Details", "Recipes");
+                return RedirectToAction("Create","RecipeIngredients");
             }
 
             ViewBag.IngredientId = new SelectList(db.Ingredients, "Id", "Name", recipeIngredient.IngredientId);

@@ -41,6 +41,7 @@ namespace RecipeApplication.Controllers
         {
             ViewBag.RecipeCatId = new SelectList(db.RecipeCategories, "Id", "CatName");
             ViewBag.CuisineTypeId = new SelectList(db.CuisineTypes, "CuisineTypeId", "Name");
+            ViewBag.IngredientId = new SelectList(db.RecipeIngredients, "IngredientId", "Id");
             return View();
         }
 
@@ -55,7 +56,7 @@ namespace RecipeApplication.Controllers
             {
                 db.Recipes.Add(recipe);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create","RecipeIngredients");
             }
 
             ViewBag.RecipeCatId = new SelectList(db.RecipeCategories, "Id", "CatName", recipe.RecipeCatId);

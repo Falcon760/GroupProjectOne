@@ -42,13 +42,6 @@
             @Html.DisplayFor(model => model.CookTime)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Procedures)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Procedures)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.RecipeCategory.CatName)
@@ -87,11 +80,20 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Measurement)
                         </td>
+
+
                     </tr>
                 }
             </table>
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Procedures)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Procedures)
+        </dd>
 
 
 
