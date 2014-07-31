@@ -19,11 +19,11 @@ namespace RecipeApplication.Controllers
         {
             var ingredients = db.Ingredients.OrderBy(q => q.Name).ToList();
             ViewBag.SelectedIngredient = new SelectList(ingredients, "IngredientID", "Name", SelectedIngredient);
-            int IngredientId = SelectedIngredient.GetValueOrDefault();
+            int departmentID = SelectedIngredient.GetValueOrDefault();
             IQueryable<Recipe> recipes = db.Recipes
             .Where(c => !SelectedIngredient.HasValue || c.Id == SelectedIngredient)
             .OrderBy(d => d.Id)
-            .Include(d => d.CuisineType);
+            .Include(d => d.RecipeIngredients);
             var sql = recipes.ToString();
             return View(recipes.ToList());
         }

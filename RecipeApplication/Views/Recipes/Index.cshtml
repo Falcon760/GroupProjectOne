@@ -11,12 +11,12 @@
 </p>
 <table class="table">
     @using (Html.BeginForm())
-{
-    <p>
-        Select Ingredient: @Html.DropDownList("SelectedIngredient", "All")
-        <input type="submit" value="Filter" />
-    </p>
-}
+    {
+        <p>
+            Select Ingredient: @Html.DropDownList("SelectedIngredient", "All")
+            <input type="submit" value="Filter" />
+        </p>
+    }
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
