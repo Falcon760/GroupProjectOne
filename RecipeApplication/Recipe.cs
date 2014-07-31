@@ -28,6 +28,8 @@ namespace RecipeApplication
 
         [DisplayName ("Desciption")]
         public string RecipeDescription { get; set; }
+
+        [DisplayName("Active Prep Time")]
         public int PrepTime { get; set; }
         public int CookTime { get; set; }
         public string Procedures { get; set; }

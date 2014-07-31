@@ -11,6 +11,7 @@ namespace RecipeApplication
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     
     public partial class CuisineType
     {
@@ -19,6 +20,7 @@ namespace RecipeApplication
             this.Recipes = new HashSet<Recipe>();
         }
     
+        [DisplayName("Cuisine")]
         public string Name { get; set; }
         public int CuisineTypeId { get; set; }
     

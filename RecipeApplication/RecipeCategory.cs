@@ -11,6 +11,7 @@ namespace RecipeApplication
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     
     public partial class RecipeCategory
     {
@@ -20,6 +21,8 @@ namespace RecipeApplication
         }
     
         public int Id { get; set; }
+
+        [DisplayName("Category")]
         public string CatName { get; set; }
         public string CatDesc { get; set; }
     
