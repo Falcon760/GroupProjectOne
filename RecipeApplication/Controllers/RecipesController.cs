@@ -17,7 +17,7 @@ namespace RecipeApplication.Controllers
         // GET: Recipes
         public ActionResult Index()
         {
-            var recipes = db.Recipes.Include(r => r.RecipeCategory);
+            var recipes = db.Recipes.Include(r => r.RecipeCategory).Include(r => r.CuisineType);
             return View(recipes.ToList());
         }
 
@@ -40,6 +40,7 @@ namespace RecipeApplication.Controllers
         public ActionResult Create()
         {
             ViewBag.RecipeCatId = new SelectList(db.RecipeCategories, "Id", "CatName");
+            ViewBag.CuisineTypeId = new SelectList(db.CuisineTypes, "CuisineTypeId", "Name");
             return View();
         }
 
@@ -48,7 +49,7 @@ namespace RecipeApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,RecipeCatId,RecipeDescription,PrepTime,CookTime,Procedures")] Recipe recipe)
+        public ActionResult Create([Bind(Include = "Id,Name,RecipeCatId,RecipeDescription,PrepTime,CookTime,Procedures,CuisineTypeId")] Recipe recipe)
         {
             if (ModelState.IsValid)
             {
@@ -58,6 +59,7 @@ namespace RecipeApplication.Controllers
             }
 
             ViewBag.RecipeCatId = new SelectList(db.RecipeCategories, "Id", "CatName", recipe.RecipeCatId);
+            ViewBag.CuisineTypeId = new SelectList(db.CuisineTypes, "CuisineTypeId", "Name", recipe.CuisineTypeId);
             return View(recipe);
         }
 
@@ -74,6 +76,7 @@ namespace RecipeApplication.Controllers
                 return HttpNotFound();
             }
             ViewBag.RecipeCatId = new SelectList(db.RecipeCategories, "Id", "CatName", recipe.RecipeCatId);
+            ViewBag.CuisineTypeId = new SelectList(db.CuisineTypes, "CuisineTypeId", "Name", recipe.CuisineTypeId);
             return View(recipe);
         }
 
@@ -82,7 +85,7 @@ namespace RecipeApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,RecipeCatId,RecipeDescription,PrepTime,CookTime,Procedures")] Recipe recipe)
+        public ActionResult Edit([Bind(Include = "Id,Name,RecipeCatId,RecipeDescription,PrepTime,CookTime,Procedures,CuisineTypeId")] Recipe recipe)
         {
             if (ModelState.IsValid)
             {
@@ -91,6 +94,7 @@ namespace RecipeApplication.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.RecipeCatId = new SelectList(db.RecipeCategories, "Id", "CatName", recipe.RecipeCatId);
+            ViewBag.CuisineTypeId = new SelectList(db.CuisineTypes, "CuisineTypeId", "Name", recipe.CuisineTypeId);
             return View(recipe);
         }
 

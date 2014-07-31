@@ -57,9 +57,17 @@
         <dd>
             @Html.DisplayFor(model => model.RecipeCategory.CatName)
         </dd>
-       <dt>
-           @Html.DisplayNameFor(model => model.RecipeIngredients)
-       </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CuisineType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CuisineType.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RecipeIngredients)
+        </dt>
         <dd>
             <table class="table">
                 <tr>
@@ -79,23 +87,23 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Measurement)
                         </td>
-
-
                     </tr>
                 }
-
-
             </table>
-
-
-
         </dd>
 
-       
+
+
+
     </dl>
 </div>
+
+
+
+
+
 <p>
-    @Html.ActionLink("Add Ingredient", "Create", "RecipeIngredients", new { id=Model.Id}, null)  |
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Add Ingredient", "Create", "RecipeIngredients", new { id = Model.Id }, null)  |
     @Html.ActionLink("Back to List", "Index")
 </p>
+

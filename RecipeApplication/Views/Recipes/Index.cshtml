@@ -1,7 +1,5 @@
 ﻿@model IEnumerable<RecipeApplication.Recipe>
 
-@using RecipeApplication.Models;
-
 @{
     ViewBag.Title = "Index";
 }
@@ -31,6 +29,9 @@
         <th>
             @Html.DisplayNameFor(model => model.RecipeCategory.CatName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CuisineType.Name)
+        </th>
         <th></th>
     </tr>
 
@@ -40,7 +41,6 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @*@Html.Truncate(item.RecipeDescription, 20)*@
             @Html.DisplayFor(modelItem => item.RecipeDescription)
         </td>
         <td>
@@ -54,6 +54,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RecipeCategory.CatName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CuisineType.Name)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

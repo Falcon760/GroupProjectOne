@@ -59,6 +59,14 @@
             @Html.DisplayFor(model => model.RecipeCategory.CatName)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.CuisineType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CuisineType.Name)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
