@@ -11,6 +11,7 @@ namespace RecipeApplication
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     
     public partial class IngredientType
     {
@@ -20,6 +21,8 @@ namespace RecipeApplication
         }
     
         public int Id { get; set; }
+
+        [DisplayName("Ingredient Type")]
         public string Name { get; set; }
     
         public virtual ICollection<Ingredient> Ingredients { get; set; }
