@@ -1,12 +1,17 @@
-﻿body {
+﻿@import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two);
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Oswald', sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    font-family: 'Oswald', sans-serif;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -15,3 +20,20 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.navbar {
+    font-family: 'Shadows Into Light Two', cursive;
+    position: relative;
+  z-index: 1000;
+  min-height: 100px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  }
+
+.navbar-brand {
+  float: left;
+  padding: 15px 15px;
+  font-size: 30px;
+  line-height: 20px;
+}
+
