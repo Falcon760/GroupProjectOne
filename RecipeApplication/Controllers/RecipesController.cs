@@ -14,6 +14,12 @@ namespace RecipeApplication.Controllers
     {
         private RecipeDbEntities1 db = new RecipeDbEntities1();
 
+
+
+
+
+
+
         // GET: Recipes
         public ActionResult Index(int? SelectedIngredient)
         {
