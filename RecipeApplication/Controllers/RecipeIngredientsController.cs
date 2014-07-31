@@ -37,7 +37,7 @@ namespace RecipeApplication.Controllers
         }
 
         // GET: RecipeIngredients/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
             ViewBag.IngredientId = new SelectList(db.Ingredients, "Id", "Name");
             ViewBag.RecipeId = new SelectList(db.Recipes, "Id", "Name");

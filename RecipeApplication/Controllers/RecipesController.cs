@@ -63,7 +63,7 @@ namespace RecipeApplication.Controllers
             {
                 db.Recipes.Add(recipe);
                 db.SaveChanges();
-                return RedirectToAction("Create","RecipeIngredients");
+                return RedirectToAction("Create", "RecipeIngredients", new { id = recipe.Id});
             }
 
             ViewBag.RecipeCatId = new SelectList(db.RecipeCategories, "Id", "CatName", recipe.RecipeCatId);
