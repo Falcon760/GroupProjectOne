@@ -14,6 +14,12 @@ namespace RecipeApplication.Controllers
     {
         private RecipeDbEntities1 db = new RecipeDbEntities1();
 
+        //private readonly Recipe _recipeModel;
+        //public RecipeIngredientController()
+        //{
+        //    _recipeModel = new Recipe();
+        //}
+
         // GET: RecipeIngredients
         public ActionResult Index()
         {
@@ -39,6 +45,7 @@ namespace RecipeApplication.Controllers
         // GET: RecipeIngredients/Create
         public ActionResult Create(int? id)
         {
+            
             ViewBag.IngredientId = new SelectList(db.Ingredients, "Id", "Name");
             ViewBag.RecipeId = new SelectList(db.Recipes, "Id", "Name");
             return View();
