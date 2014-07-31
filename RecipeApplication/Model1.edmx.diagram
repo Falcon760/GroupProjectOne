@@ -16,6 +16,8 @@
         <AssociationConnector Association="RecipeDbModel.FK_RecipeIngredient_Recipe" ManuallyRouted="false" />
         <EntityTypeShape EntityType="RecipeDbModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="RecipeDbModel.CuisineType" Width="1.5" PointX="5.875" PointY="3.25" />
+        <AssociationConnector Association="RecipeDbModel.FK_Recipe_CuisineType" />
+        <AssociationConnector Association="RecipeDbModel.FK_Recipe_CuisineType1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
