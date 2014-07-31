@@ -11,6 +11,9 @@ namespace RecipeApplication
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     
     public partial class Recipe
     {
@@ -22,6 +25,8 @@ namespace RecipeApplication
         public int Id { get; set; }
         public string Name { get; set; }
         public int RecipeCatId { get; set; }
+
+        [DisplayName ("Desciption")]
         public string RecipeDescription { get; set; }
         public int PrepTime { get; set; }
         public int CookTime { get; set; }
