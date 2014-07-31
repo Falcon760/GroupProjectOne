@@ -57,3 +57,18 @@ textarea {
   color: red;
 }
 
+.jumbotron {
+  padding: 30px;
+  margin-bottom: 30px;
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 2.1428571435;
+  color: white;
+  background-color: #0f6d78;
+  opacity:0.6;
+}
+
+.jumbotron h1 {
+    font-family: 'Shadows Into Light Two', cursive;
+}
+
