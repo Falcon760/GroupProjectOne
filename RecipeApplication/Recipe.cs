@@ -31,6 +31,8 @@ namespace RecipeApplication
 
         [DisplayName("Active Prep Time")]
         public int PrepTime { get; set; }
+
+        [DisplayName("Inactive Cook Time")]
         public int CookTime { get; set; }
         public string Procedures { get; set; }
         public int CuisineTypeId { get; set; }
