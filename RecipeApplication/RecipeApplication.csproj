@@ -126,6 +126,9 @@
     <Compile Include="Controllers\RecipeCategoriesController.cs" />
     <Compile Include="Controllers\RecipeIngredientsController.cs" />
     <Compile Include="Controllers\RecipesController.cs" />
+    <Compile Include="CuisineType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -159,6 +162,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="RecipeIngredient.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
   </ItemGroup>

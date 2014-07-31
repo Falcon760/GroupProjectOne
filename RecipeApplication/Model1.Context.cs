@@ -30,5 +30,7 @@ namespace RecipeApplication
         public virtual DbSet<Recipe> Recipes { get; set; }
         public virtual DbSet<RecipeCategory> RecipeCategories { get; set; }
         public virtual DbSet<RecipeIngredient> RecipeIngredients { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<CuisineType> CuisineTypes { get; set; }
     }
 }
