@@ -22,7 +22,7 @@ namespace RecipeApplication
     
         public int Id { get; set; }
 
-        [DisplayName("Ingredient Type")]
+        [DisplayName("Ingredient Category")]
         public string Name { get; set; }
     
         public virtual ICollection<Ingredient> Ingredients { get; set; }
