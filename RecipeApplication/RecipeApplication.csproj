@@ -123,6 +123,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IngredientsController.cs" />
     <Compile Include="Controllers\IngredientTypesController.cs" />
+    <Compile Include="Controllers\r.cs" />
     <Compile Include="Controllers\RecipeCategoriesController.cs" />
     <Compile Include="Controllers\RecipeIngredientsController.cs" />
     <Compile Include="Controllers\RecipesController.cs" />

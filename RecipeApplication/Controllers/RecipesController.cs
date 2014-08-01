@@ -14,16 +14,17 @@ namespace RecipeApplication.Controllers
     {
         private RecipeDbEntities1 db = new RecipeDbEntities1();
 
-public ActionResult Search(string SearchBox)
+        public ActionResult Search(string SearchBox)
         {
-             var recipes = (from r in db.Recipes where
-                           r.Name.Contains(SearchBox)
-                           || r.PrepTime.ToString().Contains(SearchBox)
-                           || r.CookTime.ToString().Contains(SearchBox)
-                           || r.CuisineType.Name.Contains(SearchBox)
-                           || r.RecipeCategory.CatName.Contains(SearchBox)
+            var recipes = (from r in db.Recipes
+                           where
+                               r.Name.Contains(SearchBox)
+                               || r.PrepTime.ToString().Contains(SearchBox)
+                               || r.CookTime.ToString().Contains(SearchBox)
+                               || r.CuisineType.Name.Contains(SearchBox)
+                               || r.RecipeCategory.CatName.Contains(SearchBox)
                            select r).ToList();
-             return View("Index", recipes);
+            return View("Index", recipes);
         }
 
 
@@ -31,17 +32,59 @@ public ActionResult Search(string SearchBox)
 
 
         // GET: Recipes
-        public ActionResult Index(int? SelectedIngredient)
+        //public ActionResult Index(int? SelectedIngredient)
+        ////{
+        ////    var ingredients = db.Ingredients.OrderBy(q => q.Name).ToList();
+        ////    ViewBag.SelectedIngredient = new SelectList(ingredients, "IngredientID", "Name", SelectedIngredient);
+        ////    int Id = SelectedIngredient.GetValueOrDefault();
+        ////    IQueryable<Recipe> recipes = db.Recipes
+        ////    .Where(c => !SelectedIngredient.HasValue || c.Id == SelectedIngredient)
+        ////    .OrderBy(d => d.Id)
+        ////    .Include(d => d.RecipeIngredients);
+        ////    var sql = recipes.ToString();
+        ////    return View(recipes.ToList());
+        ////}
+
+        public ActionResult Index(string sortOrder)
         {
-            var ingredients = db.Ingredients.OrderBy(q => q.Name).ToList();
-            ViewBag.SelectedIngredient = new SelectList(ingredients, "IngredientID", "Name", SelectedIngredient);
-            int departmentID = SelectedIngredient.GetValueOrDefault();
-            IQueryable<Recipe> recipes = db.Recipes
-            .Where(c => !SelectedIngredient.HasValue || c.Id == SelectedIngredient)
-            .OrderBy(d => d.Id)
-            .Include(d => d.RecipeIngredients);
-            var sql = recipes.ToString();
-            return View(recipes.ToList());
+
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.CuisineTypeParm = String.IsNullOrEmpty(sortOrder) ? "CuisineType" : "";
+            ViewBag.CategoryParm = String.IsNullOrEmpty(sortOrder) ? "Category" : "";
+            ViewBag.ActiveParm = sortOrder == "Preptime" ? "Preptime_desc" : "Preptime";
+            ViewBag.InactiveParm = sortOrder == "inactivePreptime" ? "inactivePreptime_desc" : "inactivePreptime";
+           
+            var recipe = from r in db.Recipes
+                           select r;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    recipe = recipe.OrderByDescending(r => r.Name);
+                    break;
+                case "Category":
+                    recipe = recipe.OrderBy(r => r.RecipeCategory);
+                    break;
+                    case "CuisineType":
+                    recipe = recipe.OrderByDescending(r => r.CuisineType.Name);
+                    break;
+                case "Preptime":
+                    recipe = recipe.OrderBy(r => r.PrepTime);
+                    break;
+                case "inactivePreptime":
+                    recipe = recipe.OrderBy(r => r.CookTime);
+                    break;
+                case "inactivePreptime_desc":
+                    recipe = recipe.OrderByDescending(r => r.CookTime);
+                    break;
+                case "Preptime_desc":
+                    recipe = recipe.OrderByDescending(r => r.PrepTime);
+                    break;
+
+                default:
+                    recipe = recipe.OrderBy(r => r.Name);
+                    break;
+            }
+            return View(recipe.ToList());
         }
 
         // GET: Recipes/Details/5
@@ -79,7 +122,7 @@ public ActionResult Search(string SearchBox)
             {
                 db.Recipes.Add(recipe);
                 db.SaveChanges();
-                return RedirectToAction("Create", "RecipeIngredients", new { id = recipe.Id});
+                return RedirectToAction("Create", "RecipeIngredients", new { id = recipe.Id });
             }
 
             ViewBag.RecipeCatId = new SelectList(db.RecipeCategories, "Id", "CatName", recipe.RecipeCatId);

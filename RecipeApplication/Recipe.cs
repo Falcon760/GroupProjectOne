@@ -41,5 +41,6 @@ namespace RecipeApplication
         public virtual ICollection<RecipeIngredient> RecipeIngredients { get; set; }
         public virtual CuisineType CuisineType { get; set; }
 
+
     }
 }
