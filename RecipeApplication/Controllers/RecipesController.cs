@@ -186,6 +186,10 @@ namespace RecipeApplication.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Recipe recipe = db.Recipes.Find(id);
+
+            //Recipe recipe = db.Recipes.Include(i => i.RecipeIngredients).Where(i => i.Id == id).Single();
+
+
             db.Recipes.Remove(recipe);
             db.SaveChanges();
             return RedirectToAction("Index");
