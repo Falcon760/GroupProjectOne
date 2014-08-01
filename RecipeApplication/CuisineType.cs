@@ -22,6 +22,7 @@ namespace RecipeApplication
     
         [DisplayName("Cuisine")]
         public string Name { get; set; }
+        [DisplayName("Cuisine")]
         public int CuisineTypeId { get; set; }
     
         public virtual ICollection<Recipe> Recipes { get; set; }

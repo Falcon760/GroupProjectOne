@@ -14,7 +14,17 @@ namespace RecipeApplication.Controllers
     {
         private RecipeDbEntities1 db = new RecipeDbEntities1();
 
-
+public ActionResult Search(string SearchBox)
+        {
+             var recipes = (from r in db.Recipes where
+                           r.Name.Contains(SearchBox)
+                           || r.PrepTime.ToString().Contains(SearchBox)
+                           || r.CookTime.ToString().Contains(SearchBox)
+                           || r.CuisineType.Name.Contains(SearchBox)
+                           || r.RecipeCategory.CatName.Contains(SearchBox)
+                           select r).ToList();
+             return View("Index", recipes);
+        }
 
 
 
