@@ -37,7 +37,7 @@ namespace RecipeApplication.Controllers
         }
 
         // GET: Ingredients/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
             ViewBag.IngredientTypeId = new SelectList(db.IngredientTypes, "Id", "Name");
             return View();
@@ -54,7 +54,7 @@ namespace RecipeApplication.Controllers
             {
                 db.Ingredients.Add(ingredient);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "RecipeIngredients");
             }
 
             ViewBag.IngredientTypeId = new SelectList(db.IngredientTypes, "Id", "Name", ingredient.IngredientTypeId);
