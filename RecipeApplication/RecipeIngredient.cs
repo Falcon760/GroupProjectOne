@@ -11,10 +11,12 @@ namespace RecipeApplication
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     
     public partial class RecipeIngredient
-    {
+    {  [DisplayName("Recipe Name")]
         public int RecipeId { get; set; }
+        [DisplayName("Ingredient Name")]
         public int IngredientId { get; set; }
         public string Measurement { get; set; }
         public int Id { get; set; }
