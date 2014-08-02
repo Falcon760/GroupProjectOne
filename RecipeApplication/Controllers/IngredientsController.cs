@@ -117,7 +117,7 @@ namespace RecipeApplication.Controllers
             Ingredient ingredient = db.Ingredients.Find(id);
             db.Ingredients.Remove(ingredient);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Create","Ingredient");
         }
 
         protected override void Dispose(bool disposing)

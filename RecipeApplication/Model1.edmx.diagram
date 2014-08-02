@@ -5,18 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c420560413024aca96626191dbef8bc6" Name="Diagram1" ZoomLevel="88">
-        <EntityTypeShape EntityType="RecipeDbModel.Ingredient" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="RecipeDbModel.IngredientType" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RecipeDbModel.Recipe" Width="1.5" PointX="3.75" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RecipeDbModel.RecipeCategory" Width="1.5" PointX="1.125" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RecipeDbModel.RecipeIngredient" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="RecipeDbModel.FK_Ingredient_IngredientType" ManuallyRouted="false" />
-        <AssociationConnector Association="RecipeDbModel.FK_RecipeIngredient_Ingredient" ManuallyRouted="false" />
         <AssociationConnector Association="RecipeDbModel.FK_Recipe_RecipeCategory" ManuallyRouted="false" />
-        <AssociationConnector Association="RecipeDbModel.FK_RecipeIngredient_Recipe" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="RecipeDbModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="RecipeDbModel.CuisineType" Width="1.5" PointX="6.25" PointY="3.75" />
         <AssociationConnector Association="RecipeDbModel.FK_Recipe_CuisineType" />
+        <EntityTypeShape EntityType="RecipeDbModel.Ingredient" Width="1.5" PointX="3.625" PointY="7.5" />
+        <EntityTypeShape EntityType="RecipeDbModel.IngredientType" Width="1.5" PointX="0.625" PointY="6.875" />
+        <EntityTypeShape EntityType="RecipeDbModel.RecipeIngredient" Width="1.5" PointX="6" PointY="6.375" />
+        <AssociationConnector Association="RecipeDbModel.FK_Ingredient_IngredientType" />
+        <AssociationConnector Association="RecipeDbModel.FK_RecipeIngredient_Ingredient" />
+        <AssociationConnector Association="RecipeDbModel.FK_RecipeIngredient_Recipe" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

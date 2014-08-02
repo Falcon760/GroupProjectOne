@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CuisineTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IngredientsController.cs" />
     <Compile Include="Controllers\IngredientTypesController.cs" />
@@ -162,9 +163,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="RecipeIngredient.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -250,6 +248,11 @@
     <Content Include="Views\Recipes\Details.cshtml" />
     <Content Include="Views\Recipes\Edit.cshtml" />
     <Content Include="Views\Recipes\Index.cshtml" />
+    <Content Include="Views\CuisineType\Create.cshtml" />
+    <Content Include="Views\CuisineType\Delete.cshtml" />
+    <Content Include="Views\CuisineType\Details.cshtml" />
+    <Content Include="Views\CuisineType\Edit.cshtml" />
+    <Content Include="Views\CuisineType\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

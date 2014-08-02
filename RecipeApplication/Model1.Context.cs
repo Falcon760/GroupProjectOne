@@ -25,12 +25,11 @@ namespace RecipeApplication
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Ingredient> Ingredients { get; set; }
-        public virtual DbSet<IngredientType> IngredientTypes { get; set; }
         public virtual DbSet<Recipe> Recipes { get; set; }
         public virtual DbSet<RecipeCategory> RecipeCategories { get; set; }
-        public virtual DbSet<RecipeIngredient> RecipeIngredients { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<CuisineType> CuisineTypes { get; set; }
+        public virtual DbSet<Ingredient> Ingredients { get; set; }
+        public virtual DbSet<IngredientType> IngredientTypes { get; set; }
+        public virtual DbSet<RecipeIngredient> RecipeIngredients { get; set; }
     }
 }

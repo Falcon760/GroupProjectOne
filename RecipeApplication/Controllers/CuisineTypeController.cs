@@ -10,107 +10,107 @@ using RecipeApplication;
 
 namespace RecipeApplication.Controllers
 {
-    public class RecipeCategoriesController : Controller
+    public class CuisineTypeController : Controller
     {
         private RecipeDbEntities1 db = new RecipeDbEntities1();
 
-        // GET: RecipeCategories
+        // GET: /CuisineType/
         public ActionResult Index()
         {
-            return View(db.RecipeCategories.ToList());
+            return View(db.CuisineTypes.ToList());
         }
 
-        // GET: RecipeCategories/Details/5
+        // GET: /CuisineType/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RecipeCategory recipeCategory = db.RecipeCategories.Find(id);
-            if (recipeCategory == null)
+            CuisineType cuisinetype = db.CuisineTypes.Find(id);
+            if (cuisinetype == null)
             {
                 return HttpNotFound();
             }
-            return View(recipeCategory);
+            return View(cuisinetype);
         }
 
-        // GET: RecipeCategories/Create
+        // GET: /CuisineType/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: RecipeCategories/Create
+        // POST: /CuisineType/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CatName,CatDesc")] RecipeCategory recipeCategory)
+        public ActionResult Create([Bind(Include="Name,CuisineTypeId")] CuisineType cuisinetype)
         {
             if (ModelState.IsValid)
             {
-                db.RecipeCategories.Add(recipeCategory);
+                db.CuisineTypes.Add(cuisinetype);
                 db.SaveChanges();
-                return RedirectToAction("Create","RecipeCategories");
+                return RedirectToAction("Create","CuisineType");
             }
 
-            return View(recipeCategory);
+            return View(cuisinetype);
         }
 
-        // GET: RecipeCategories/Edit/5
+        // GET: /CuisineType/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RecipeCategory recipeCategory = db.RecipeCategories.Find(id);
-            if (recipeCategory == null)
+            CuisineType cuisinetype = db.CuisineTypes.Find(id);
+            if (cuisinetype == null)
             {
                 return HttpNotFound();
             }
-            return View(recipeCategory);
+            return View(cuisinetype);
         }
 
-        // POST: RecipeCategories/Edit/5
+        // POST: /CuisineType/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CatName,CatDesc")] RecipeCategory recipeCategory)
+        public ActionResult Edit([Bind(Include="Name,CuisineTypeId")] CuisineType cuisinetype)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(recipeCategory).State = EntityState.Modified;
+                db.Entry(cuisinetype).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(recipeCategory);
+            return View(cuisinetype);
         }
 
-        // GET: RecipeCategories/Delete/5
+        // GET: /CuisineType/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RecipeCategory recipeCategory = db.RecipeCategories.Find(id);
-            if (recipeCategory == null)
+            CuisineType cuisinetype = db.CuisineTypes.Find(id);
+            if (cuisinetype == null)
             {
                 return HttpNotFound();
             }
-            return View(recipeCategory);
+            return View(cuisinetype);
         }
 
-        // POST: RecipeCategories/Delete/5
+        // POST: /CuisineType/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            RecipeCategory recipeCategory = db.RecipeCategories.Find(id);
-            db.RecipeCategories.Remove(recipeCategory);
+            CuisineType cuisinetype = db.CuisineTypes.Find(id);
+            db.CuisineTypes.Remove(cuisinetype);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

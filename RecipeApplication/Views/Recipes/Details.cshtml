@@ -80,6 +80,7 @@
                             @Html.DisplayFor(modelItem => item.Measurement)
                         </td>
                         <td>
+    
                             @Html.ActionLink("Delete", "Delete", "RecipeIngredients", new { id = item.Id }, null)
                         </td>
 
@@ -106,7 +107,9 @@
 
 
 <p>
-    @Html.ActionLink("Add Ingredient", "Create", "RecipeIngredients", new { id = Model.Id }, null)  |
-    @Html.ActionLink("Back to List", "Index")
+    <input type="button" value="Add Ingredient" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","RecipeIngredients",new { id = Model.Id }, null)' " />
+    <input type="button" value="Back" class="btn btn-default" onclick="window.location.href='@Url.Action("Index")' "/>
+    @*@Html.ActionLink("Add Ingredient", "Create", "RecipeIngredients", new { id = Model.Id }, null)  |
+    @Html.ActionLink("Back to List", "Index")*@
 </p>
 
