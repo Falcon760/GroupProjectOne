@@ -19,9 +19,9 @@ namespace RecipeApplication
         public int RecipeCatId { get; set; }
         [DisplayName("Description")]
         public string RecipeDescription { get; set; }
-        [DisplayName("Prep Time")]
+        [DisplayName("Inactive Prep Time")]
         public int PrepTime { get; set; }
-        [DisplayName("Cook Time")]
+        [DisplayName("Active Cook Time")]
         public int CookTime { get; set; }
         public string Procedures { get; set; }
         [DisplayName("Cuisine Type")]
